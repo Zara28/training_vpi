@@ -6,7 +6,6 @@
 #include <fstream> // подключаем файлы
 #include <clocale>
 #include <windows.h>
-#include "stdio.h"
 using namespace std;
 int main()
 {
@@ -21,11 +20,10 @@ int main()
     {
         int ccount = 0;
         cout << "Введи номер предмета, по которому хочешь тренироваться\n 1.История\n 2.Философия\n 3.Английский \n для закрытия программы введи 101\n Для перевыбора предмета введи 100\n";
-        string* opr = new string[50];
-
-        string* pon = new string[50];
-        string* dop = new string[50];
-        string path = "D:\\моя папка\\институт\\впи\\dict\\tren_c++\\Debug\\";
+        string opr[50];
+        string pon[50];
+        string dop[50];
+        string path = "";
         cin >> n;
         switch (n)
         {
@@ -43,22 +41,25 @@ int main()
             continue;
             break;
         case 100:
-            cout << "Вы еще не выбрали";
+            cout << "Вы еще не выбрали\n";
             continue;
         default:
-            cout << "Произошла ошибка. Выберите снова";
+            cout << "Произошла ошибка. Выберите снова\n";
             continue;
         }
-        cout << "\n";
-        ifstream file(path); // файл из которого читаем (для линукс путь будет выглядеть по другому)
+
         int i = 0;
-        while (getline(file, dop[i]))
-        { // пока не достигнут конец файла класть очередную строку в переменную (s)
-            pon[i] = dop[i].substr(0, dop[i].find(";"));
-            opr[i] = dop[i].substr(dop[i].find(";"), dop[i].find("\n"));
-            i++;// выводим на экран
-   // обязательно закрываем файл что бы не повредить его
+        ifstream file(path);
+        while (file.is_open() && i<50)
+        {
+            getline(file, dop[i]);
+                pon[i] = dop[i].substr(0, dop[i].find(";"));
+                opr[i] = dop[i].substr(dop[i].find(";") + 1, dop[i].find("\n"));
+                i++;
+            
         }
+
+        file.close();
             while (n != 100)
             {
                
@@ -73,28 +74,24 @@ int main()
                 else if (ans == "100")
                 {
                     n = 100;
-                    cout<<"Ваш счет: " << ccount;
+                    cout<<"\nВаш счет: " << ccount;
                     continue;
                 }
                 else if (ans == "101") {
                     n = 101;
-                    cout<<"Ваш счет: " << ccount;
+                    cout<<"\nВаш счет: " << ccount;
                     break;
                 }
                 sum += ccount;
 
-                cout<<"Ваш общий счет: " << ccount;
+
             }
 
 
        cout<<"Ваш общий счет: "<< sum;
 
 
-                file.close();
         
-        delete[] opr;
-
-        delete[] pon;
     }
 }
 

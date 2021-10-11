@@ -149,6 +149,11 @@
   <ItemGroup>
     <ClCompile Include="tren_c++.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Debug\eng.txt" />
+    <Text Include="Debug\fil.txt" />
+    <Text Include="Debug\hist.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
