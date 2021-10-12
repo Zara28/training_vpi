@@ -35,7 +35,7 @@ int main()
             path += "fil.txt";
             break;
         case 3:
-            path += "eng.txt";
+            path += "eng1.txt";
             break;
         case 101:
             continue;
@@ -54,7 +54,7 @@ int main()
         {
             getline(file, dop[i]);
                 pon[i] = dop[i].substr(0, dop[i].find(";"));
-                opr[i] = dop[i].substr(dop[i].find(";") + 1, dop[i].find("\n"));
+                    opr[i] = dop[i].substr(dop[i].find(";") + 1, dop[i].find("\n"));
                 i++;
             
         }
@@ -64,7 +64,7 @@ int main()
             {
                
                 int r = rand()%50+1;
-                cout<<opr[r];
+                cout<<opr[r]<<"\n";
                 string ans;
                 cin >> ans;
                 if (ans == pon[r])
@@ -74,12 +74,12 @@ int main()
                 else if (ans == "100")
                 {
                     n = 100;
-                    cout<<"\nВаш счет: " << ccount;
+                    cout<<"\nВаш счет: " << ccount<<"\n";
                     continue;
                 }
                 else if (ans == "101") {
                     n = 101;
-                    cout<<"\nВаш счет: " << ccount;
+                    cout<<"\nВаш счет: " << ccount<<"\n";
                     break;
                 }
                 sum += ccount;
@@ -88,11 +88,12 @@ int main()
             }
 
 
-       cout<<"Ваш общий счет: "<< sum;
 
 
         
     }
+
+    cout << "Ваш общий счет: " << sum;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
